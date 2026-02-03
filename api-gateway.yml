@@ -4,12 +4,13 @@ server:
 spring:
   application:
     name: api-gateway
-
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: false
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
       routes:
         - id: order-service
           uri: lb://ORDER-SERVICE
