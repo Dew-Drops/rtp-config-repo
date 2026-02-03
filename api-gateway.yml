@@ -15,6 +15,11 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: orderServiceCB
+                fallbackUri: forward:/orderFallback
 
 eureka:
   client:
