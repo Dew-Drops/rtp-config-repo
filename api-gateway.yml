@@ -31,10 +31,28 @@ management:
     web:
       exposure:
         include: health,info,metrics
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      order-service:
+#        failure-rate-threshold: 50
+#        sliding-window-size: 10
+#        wait-duration-in-open-state: 10s
 resilience4j:
   circuitbreaker:
     instances:
-      order-service:
-        failure-rate-threshold: 50
-        sliding-window-size: 10
-        wait-duration-in-open-state: 10s
+      orderServiceCB:
+        registerHealthIndicator: true
+
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+
+        minimumNumberOfCalls: 5
+
+        failureRateThreshold: 50
+
+        waitDurationInOpenState: 10s
+
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        automaticTransitionFromOpenToHalfOpenEnabled: true
