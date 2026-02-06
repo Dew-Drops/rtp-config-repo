@@ -20,8 +20,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: orderServiceCB
-                fallbackUri: forward:/orderFallback
-
+                fallbackUri: forward:/fallback/orders    #fallbackUri: forward:/orderFallback
 eureka:
   client:
     service-url:
