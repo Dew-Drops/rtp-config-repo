@@ -2,3 +2,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 3s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,circuitbreakers,circuitbreakerevents
+  endpoint:
+    health:
+      show-details: always
