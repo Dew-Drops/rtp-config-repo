@@ -16,11 +16,11 @@ spring:
               uri: lb://ORDER-SERVICE
               predicates:
                 - Path=/orders/**
-              filters:
-                - name: RequestRateLimiter
-                  args:
-                    redis-rate-limiter.replenishRate: 10
-                    redis-rate-limiter.burstCapacity: 20
+#              filters:
+#                - name: RequestRateLimiter
+#                  args:
+#                    redis-rate-limiter.replenishRate: 10
+#                    redis-rate-limiter.burstCapacity: 20
 
                 - name: Retry
                   args:
